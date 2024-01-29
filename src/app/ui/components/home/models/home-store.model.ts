@@ -1,8 +1,8 @@
 export class HomeStoreModel{
     id:number = 0;
     name: string = '';
-    description: string = '';
-    categoryName: string = '';
-    brandName: string = '';
+    address: string = '';
+    phoneNumber: string = '';
+    isOnlineAvailable: boolean = false;
     averageScore: string = '';
 }

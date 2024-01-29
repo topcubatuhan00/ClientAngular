@@ -25,7 +25,9 @@ export class HomeComponent {
 			this.productResponse = productResponse.data;
 		})
 
-		
+		this._homeService.fetchStores((storeResponse: any) => {
+			this.storeResponse = storeResponse.data;
+		})
 		
 	}
 	
