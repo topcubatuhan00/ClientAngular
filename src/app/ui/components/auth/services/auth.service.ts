@@ -19,11 +19,15 @@ export class AuthService {
 		private _toastr: ToastrService
 	) { }
 
-	login(model: any) {
+	login(model: any, rememberMe: boolean) {
 		this._http.post<any>(this.apiLoginEndpoint, model, res => {
 			if (!res.error) {
-				this._crypto.getDecodedAccessToken(res.token);
+				let decoded = this._crypto.getDecodedAccessToken(res.token);
 				localStorage.setItem("accessToken", res.token);
+				if (rememberMe) {
+					localStorage.setItem("rememberUserName", decoded.Name)
+					localStorage.setItem("rememberUserPhoto", decoded.Photo)
+				}
 				this._toastr.success("Giriş Başarılı", "Başarılı")
 				this._router.navigateByUrl("/");
 				return;
@@ -36,6 +40,7 @@ export class AuthService {
 
 	logOut() {
 		localStorage.removeItem("accessToken");
+		this._router.navigateByUrl("/");
 		this._toastr.success("Çıkış Başarılı", "Başarılı")
 	}
 }
