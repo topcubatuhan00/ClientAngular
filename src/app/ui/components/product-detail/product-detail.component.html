@@ -65,14 +65,13 @@
                             {{product.sustainabilityScore}}
                         </div>
                     </div>
-                    <div>
-                        <h2 class="mb-0 bg-success py-2 px-3 mt-4">
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <h2 class="mb-0 py-2 px-3 w-50 mr-4 text-center"
+                            style="background-color: #789461; border-radius: 10px;color: #fff">
                             {{product.price}} ₺
                         </h2>
-                    </div>
-                    <div class="bg-danger mt-2 p-2" style="border-radius: 10px;">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h6><i class="icon fas fa-info mr-2"></i>Fiyatlar Değişiklik Gösterebilir!</h6>
+                        <h6 class="mt-2 p-3" style="border-radius: 10px; background-color: #A94438;color: #fff"><i
+                                class="icon fas fa-info mr-2"></i>Fiyatlar Değişiklik Gösterebilir!</h6>
                     </div>
                     <!-- <div class="mt-4">
                         <div class="btn btn-primary btn-lg btn-flat">
@@ -131,7 +130,7 @@
     <section class="content">
         <div class="row">
             <div class="col-12" id="accordion">
-                <div class="card card-warning card-outline">
+                <div class="card card-success card-outline">
                     <a class="d-block w-100" data-toggle="collapse" href="#collapseFour">
                         <div class="card-header">
                             <h4 class="card-title w-100">
@@ -162,13 +161,14 @@
                                         </div>
                                         <div class="col-5 text-center">
                                             <img [src]="apiLink+com.userPhotoName" alt="user-avatar"
-                                                class="img-circle img-fluid" style="width: 100px;border: 1px solid #dc3545;">
+                                                class="img-circle img-fluid"
+                                                style="width: 100px;border: 2px solid #dc3545;">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer p-0 bg-light">
                                     <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
+                                        <a (click)="updateLike(com.id)" class="btn btn-sm bg-teal">
                                             <i class="fas fa-thumbs-up"></i>
                                         </a>
                                     </div>
@@ -181,4 +181,12 @@
             </div>
         </div>
     </section>
+
+    <div class="input-group-prepend mb-5">
+        <input [formControl]="comment" type="text" class="form-control" placeholder="Yorum Yap">
+        <button (click)="sendComment()" type="button" class="btn btn-success"><i class="fas fa-paper-plane"></i></button>
+    </div>
+
+    
+
 </div>

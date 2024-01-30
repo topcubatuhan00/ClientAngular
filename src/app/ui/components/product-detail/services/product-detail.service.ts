@@ -13,20 +13,26 @@ export class ProductDetailService {
 
 	productDetailApiEndpoint = 'Product/'
 	commentApiEndpoint = 'Comment/GetAll'
+	updateScoreApiEndpoint = 'Product/UpdateScore/'
+	sentCommentApiEndpoint = 'Comment/Create'
 	
 	fetchProductById = (id: number, callBack: (res: ProductDetailModel) => void) => {
 		this._http.get<ProductDetailModel>(this.productDetailApiEndpoint + id, callBack)
 	}
 
-	// fetchComments(model: any) {
-	// 	this._http.post<any>(this.commentApiEndpoint, model, res => {
-	// 		console.log(res);
-			
-	// 		return;
-	// 	})
-	// }
+	updateLike = (id: number, callBack: (res: any) => void) =>{
+		this._http.post<any>(this.updateScoreApiEndpoint+id,{id: id}, callBack);
+	}
+
+	updateScore = (id: number, num: number, callBack: (res: any) => void) =>{
+		this._http.post<any>(this.updateScoreApiEndpoint+id,{id: id,number: num}, callBack);
+	}
 
 	fetchComments = (model: any, callBack: (res: any) => void) =>{
 		this._http.post<any>(this.commentApiEndpoint,model, callBack);
+	}
+
+	sendComment = (model: any, callBack: (res: any) => void) => {
+		this._http.post<any>(this.sentCommentApiEndpoint, model, callBack);
 	}
 }

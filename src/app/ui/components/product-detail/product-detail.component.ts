@@ -4,11 +4,12 @@ import { ProductDetailService } from './services/product-detail.service';
 import { ProductDetailModel } from './models/product-detail.model';
 import { CryptoService } from '../../../common/services/crypto.service';
 import { CommentModel } from './models/comment.model';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-product-detail',
 	standalone: true,
-	imports: [],
+	imports: [FormsModule, ReactiveFormsModule],
 	templateUrl: './product-detail.component.html',
 	styleUrl: './product-detail.component.css'
 })
@@ -25,6 +26,10 @@ export class ProductDetailComponent {
 	score = 0;
 	comments = new Array<CommentModel>();
 	apiLink = 'https://localhost:7269/Image/GetImage/'
+	userId = 0;
+	userName = "";
+
+	comment = new FormControl('');
 
 	ngOnInit() {
 		this._activateRoute.paramMap.subscribe(params => {
@@ -41,9 +46,11 @@ export class ProductDetailComponent {
 		let userPhotoName = ""
 		if (token) {
 			let decodedToken = token ? this._crypto.getDecodedAccessToken(token) : null
-			userName = decodedToken.Name
-			userId = decodedToken.Id
-			userPhotoName = decodedToken.Photo			
+			userName = decodedToken.Name;
+			userId = decodedToken.Id;
+			userPhotoName = decodedToken.Photo;
+			this.userId = userId;		
+			this.userName = userName;		
 		}
 
 		let scoreName = 'score' + this.id + userName
@@ -56,7 +63,6 @@ export class ProductDetailComponent {
 		}
 		this._service.fetchComments(obj, (comments: any) => {
 			this.comments = comments
-			console.log(this.comments);
 			
 		});
 		
@@ -66,6 +72,29 @@ export class ProductDetailComponent {
 		let userName = localStorage.getItem('rememberUserName')
 		let scoreName = 'score' + this.id + userName
 		localStorage.setItem(scoreName, num.toString())
+
+		this._service.updateScore(this.id,num, (res: any) => {
+			window.location.reload()
+		})
 	}
 
+	updateLike(num: number) {
+		this._service.updateLike(num, (res: any) => {
+			console.log(res);
+		})
+	}
+
+	sendComment(){
+		let obj = {
+			productId : this.id,
+			userId: this.userId,
+			text: this.comment.value,
+			commentScore: 0,
+			creatorName: this.userName
+		} 
+		
+		this._service.sendComment(obj, (res: any) => {
+			window.location.reload()
+		})
+	}
 }
