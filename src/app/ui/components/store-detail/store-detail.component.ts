@@ -32,7 +32,6 @@ export class StoreDetailComponent {
 
 			this._service.fetchStoreById(this.storeId, (store: any) => {
 				this.store = store.data;
-				console.log(this.store);
 				this.generateMapsUrl();
 			})
 
