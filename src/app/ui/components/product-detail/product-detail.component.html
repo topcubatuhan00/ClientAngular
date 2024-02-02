@@ -20,7 +20,23 @@
         <div class="card-body">
             <div>
                 <div>
-                    <h3 class="my-3">{{product.name}}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="my-3">{{product.name}}</h3>
+                        <div>
+                            @if (favoriteId > 0){
+                                <div style="font-size: 14px; border-radius: 10px;" (click)="favorite()" class="btn btn-danger btn-lg btn-flat">
+                                    <i class="fas fa-heart fa-lg mr-2"></i>
+                                    Favorilerden Kaldır
+                                </div>
+                            }
+                            @else {
+                                <div style="font-size: 14px; border-radius: 10px;" (click)="favorite()" class="btn btn-default btn-lg btn-flat">
+                                    <i class="fas fa-heart fa-lg mr-2"></i>
+                                    Favorile
+                                </div>
+                            }
+                        </div>
+                    </div>
                     <hr>
                     <div class="d-flex justify-content-between align-items-center">
                         <h4>{{product.categoryName}}</h4>
@@ -73,30 +89,6 @@
                         <h6 class="mt-2 p-3" style="border-radius: 10px; background-color: #A94438;color: #fff"><i
                                 class="icon fas fa-info mr-2"></i>Fiyatlar Değişiklik Gösterebilir!</h6>
                     </div>
-                    <!-- <div class="mt-4">
-                        <div class="btn btn-primary btn-lg btn-flat">
-                            <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                            Add to Cart
-                        </div>
-                        <div class="btn btn-default btn-lg btn-flat">
-                            <i class="fas fa-heart fa-lg mr-2"></i>
-                            Add to Wishlist
-                        </div>
-                    </div>
-                    <div class="mt-4 product-share">
-                        <a href="#" class="text-gray">
-                            <i class="fab fa-facebook-square fa-2x"></i>
-                        </a>
-                        <a href="#" class="text-gray">
-                            <i class="fab fa-twitter-square fa-2x"></i>
-                        </a>
-                        <a href="#" class="text-gray">
-                            <i class="fas fa-envelope-square fa-2x"></i>
-                        </a>
-                        <a href="#" class="text-gray">
-                            <i class="fas fa-rss-square fa-2x"></i>
-                        </a>
-                    </div> -->
                 </div>
             </div>
             <div class="row mt-4">
@@ -139,6 +131,12 @@
                         </div>
                     </a>
                     <div id="collapseFour" class="collapse" data-parent="#accordion">
+                        <div class="input-group-prepend m-3">
+                            <input [formControl]="comment" type="text" class="form-control mr-2"
+                                placeholder="Yorum Yap">
+                            <button (click)="sendComment()" type="button" class="btn btn-success"><i
+                                    class="fas fa-paper-plane"></i></button>
+                        </div>
                         @for (com of comments; track $index){
                         <div class="card-body">
                             <div class="card bg-light d-flex flex-fill p-3" style="border-left: 3px solid #dc3545;">
@@ -181,12 +179,4 @@
             </div>
         </div>
     </section>
-
-    <div class="input-group-prepend mb-5">
-        <input [formControl]="comment" type="text" class="form-control" placeholder="Yorum Yap">
-        <button (click)="sendComment()" type="button" class="btn btn-success"><i class="fas fa-paper-plane"></i></button>
-    </div>
-
-    
-
 </div>

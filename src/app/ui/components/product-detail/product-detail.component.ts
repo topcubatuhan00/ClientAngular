@@ -28,6 +28,7 @@ export class ProductDetailComponent {
 	apiLink = 'https://localhost:7269/Image/GetImage/'
 	userId = 0;
 	userName = "";
+	favoriteId = 0;
 
 	comment = new FormControl('');
 
@@ -38,17 +39,16 @@ export class ProductDetailComponent {
 
 			this._service.fetchProductById(this.id, (product: any) => {
 				this.product = product.data
+								
 			})
 		})
 		let token = localStorage.getItem('accessToken')
 		let userName = "";
 		let userId = 0;
-		let userPhotoName = ""
 		if (token) {
 			let decodedToken = token ? this._crypto.getDecodedAccessToken(token) : null
 			userName = decodedToken.Name;
 			userId = decodedToken.Id;
-			userPhotoName = decodedToken.Photo;
 			this.userId = userId;		
 			this.userName = userName;		
 		}
@@ -65,7 +65,16 @@ export class ProductDetailComponent {
 			this.comments = comments
 			
 		});
-		
+
+		let favsObj = {
+			userId: userId,
+			productId : this.id
+		}
+		this._service.fetchFavs(favsObj, (favs: any) => {
+			if (favs !== null){
+				this.favoriteId = favs.id;				
+			}
+		})
 	}
 
 	setScore(num: number) {
@@ -96,5 +105,23 @@ export class ProductDetailComponent {
 		this._service.sendComment(obj, (res: any) => {
 			window.location.reload()
 		})
+	}
+
+	favorite(){
+		console.log(this.favoriteId);
+		
+		if(this.favoriteId > 0){
+			this._service.removeFavorite(this.favoriteId, (res : any) => {
+				this.favoriteId = -1;
+			});
+		}else{
+			let obj = {
+				productId: this.id,
+				userId : this.userId
+			}			
+			this._service.createFavorite(obj, (res: any) => {
+				this.favoriteId = res;
+			});
+		}
 	}
 }
