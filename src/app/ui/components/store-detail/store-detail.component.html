@@ -1,1 +1,71 @@
-<p>store-detail works!</p>
+<div class="content-wrapper">
+    <div class="container">
+
+        <div class="shadow p-4 my-4" style="border-radius: 10px;">
+            <h1>Mağaza Detayları</h1>
+            <hr />
+            <div class="d-flex justify-content-between align-items-center">
+                <h3>{{store.name}}</h3>
+                <div class="d-flex align-items-center">
+                    <strong class="mr-2">Mağaza Puanı : </strong>
+                    @if(convertSTR(store.averageScore) >= 4)
+                    {
+                    <span class="badge bg-success" style="font-size: 20px;">{{ store.averageScore }}</span>
+                    }
+                    @else if(convertSTR(store.averageScore) < 4 && convertSTR(store.averageScore)>= 3)
+                        {
+                        <span class="badge bg-warning" style="font-size: 20px;"> {{ store.averageScore }}</span>
+                        }
+                        @else if(convertSTR(store.averageScore) < 3) { <span style="font-size: 20px;" class="badge bg-danger"> {{
+                            store.averageScore }}</span>
+                            }
+                </div>
+            </div>
+            <hr class="w-75" />
+            <div class="text-center"><i class="fa fa-phone mr-2" aria-hidden="true"></i>
+                <strong>İletişim Numarası : </strong>{{store.phoneNumber}}</div>
+            <hr class="w-75" />
+            <div class="text-center" style="font-size: 20px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                @if (store.isOnlineAvailable){
+                    Muhteşem! <br />
+                    Bu mağaza online siparişler verebileceğin bir mağaza. <br />
+                    
+                    <iframe style="border: none;" class="m-2" src="https://lottie.host/embed/fb85fd25-4143-48bd-8832-825099704967/CefPLK7aiO.json"></iframe>
+
+                    <br /> Fakat üzgünüz şu anda GreenChoice üzerinden sipariş veremezsin. <br />
+                    Dilersen mağazanın telefon numarasından ulaşarak sipariş verebilirsin. 
+                }
+            </div>
+        </div>
+        <div class="shadow p-4 my-4" style="border-radius: 10px;">
+            <h1>Mağazada Bulunan Ürünler</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Fiyatı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (product of products; track $index){
+                    <tr class="pe-auto">
+                        <td>{{$index+1}}</td>
+                        <td style="cursor: pointer;"><a [href]="'/product/'+product.id">{{product.name}}</a></td>
+                        <td>{{product.price}} ₺</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="shadow p-4 my-4" style="border-radius: 10px;">
+            <h2>Mağazanın Konumu</h2>
+            <hr />
+            @if(url !== ""){
+            <iframe style="height:100%;width:100%;border:0;" frameborder="0" [src]="url"></iframe>
+            }
+        </div>
+    </div>
+</div>
