@@ -5,8 +5,8 @@
 
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
-            <div class="image">
-                <img [src]="apiUrl" class="img-circle elevation-2" style="width: 70px;" alt="User Image">
+            <div class="image pl-0">
+                <img [src]="apiUrl" class="img-circle elevation-2 pl-0" style="width: 55px;" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{userName}}</a>
@@ -32,7 +32,7 @@
                     <a href="/" class="nav-link">
                         <i class="nav-icon fas fa-columns"></i>
                         <p>
-                            Home
+                            Ana Sayfa
                         </p>
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                     <a href="/products" class="nav-link">
                         <i class="nav-icon fas fa-clone"></i>
                         <p>
-                            Products
+                            Ürünler
                         </p>
                     </a>
                 </li>
@@ -48,7 +48,15 @@
                     <a href="/stores" class="nav-link">
                         <i class="nav-icon fas fa-road"></i>
                         <p>
-                            Stores
+                            Mağazalar
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/favorites" class="nav-link">
+                        <i class="nav-icon fas fa-heart"></i>
+                        <p>
+                            Favoriler
                         </p>
                     </a>
                 </li>
@@ -57,7 +65,7 @@
                         <a (click)="logout()" class="nav-link">
                             <i class="nav-icon fas fa-circle text-danger"></i>
                             <p style="cursor: pointer;">
-                                Sign Out
+                                Çıkış Yap
                             </p>
                         </a>
                     }
@@ -65,7 +73,7 @@
                         <a href="/login" class="nav-link">
                             <i class="nav-icon fas fa-circle text-success"></i>
                             <p>
-                                Sign In
+                                Giriş Yap
                             </p>
                         </a>
                     }

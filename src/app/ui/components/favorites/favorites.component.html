@@ -1,0 +1,24 @@
+<div class="content-wrapper">
+    <div class="container py-4">
+        @if(favorites.length === 0){
+        <div class="alert alert-danger alert-dismissible">
+            <h5><i class="icon fas fa-ban"></i> Uyarı!</h5>
+            Henüz herhangi bir ürün favorilemediğinizi fark ettik. Dilerseniz <a href="/products">ürünler</a> sayfasından 
+            beğendiğiniz ürünleri favorilerinize ekleyebilirsiniz.
+        </div>
+
+        }@else{
+        @for (fav of favorites; track $index){ <div class="callout callout-warning mx-4">
+            <h5>Favoriye Eklenen Ürün</h5>
+            <strong>{{fav.productName}}</strong>
+            <hr />
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="text-info">Detaya Gitmek İçin : <a style="cursor: pointer;"
+                        [href]="'product/'+fav.productId"><strong>Tıkla</strong></a></span>
+                <div><i style="cursor: pointer;" (click)="removeFav(fav.id)" class="fa fa-trash text-danger"></i></div>
+            </div>
+        </div>
+        }
+        }
+    </div>
+</div>

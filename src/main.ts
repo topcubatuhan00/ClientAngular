@@ -34,6 +34,10 @@ bootstrapApplication(AppComponent, {
                             "loadComponent": () => import("./app/ui/components/product-detail/product-detail.component").then(c => c.ProductDetailComponent),
                         },
                         {
+                            "path": "favorites",
+                            "loadComponent": () => import("./app/ui/components/favorites/favorites.component").then(c => c.FavoritesComponent),
+                        },
+                        {
                             "path": "store/:id",
                             "loadComponent": () => import("./app/ui/components/store-detail/store-detail.component").then(c => c.StoreDetailComponent),
                         }
