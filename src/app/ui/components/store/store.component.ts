@@ -50,4 +50,7 @@ export class StoreComponent {
 		param = param.length === 1 ? param+=".0" : param		
 		return parseFloat(param);
 	}
+	addStore(){
+		this._router.navigateByUrl("/add-store");
+	}
 }

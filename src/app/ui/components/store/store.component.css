@@ -1,0 +1,8 @@
+#addStore{
+    opacity: .6;
+    transition: 500ms all;
+}
+
+#addStore:hover{
+    opacity: 1 !important;
+}

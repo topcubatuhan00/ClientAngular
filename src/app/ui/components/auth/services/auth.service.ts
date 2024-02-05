@@ -38,6 +38,21 @@ export class AuthService {
 		})
 	}
 
+	register(model: any){
+		console.log(model);
+		this._http.post<any>(this.apiRegisterEndpoint, model, res => {
+			if (!res.error) {
+				localStorage.setItem("accessToken", res.token);
+				this._toastr.success("Kullanıcı Başarıyla Kaydedildi", "Başarılı")
+				this._router.navigateByUrl("/");
+				return;
+			} else {
+				this._toastr.error("Bir hata oluştu tekrar deneyin...", "Hata")
+			}
+			return;
+		})
+	}
+
 	logOut() {
 		localStorage.removeItem("accessToken");
 		this._router.navigateByUrl("/");

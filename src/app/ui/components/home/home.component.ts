@@ -20,7 +20,6 @@ export class HomeComponent {
 
 	productResponse: HomeProductModel[] = [];
 	storeResponse: HomeStoreModel[] = [];
-	// commentResponse: HomeCommentModel[] = [];
 
 	ngOnInit() {
 		this._homeService.fetchProducts((productResponse: any) => {
@@ -38,4 +37,5 @@ export class HomeComponent {
 	storeDetail(id:number){
 		this._router.navigateByUrl("/store/"+id);
 	}
+	
 }

@@ -30,24 +30,35 @@ bootstrapApplication(AppComponent, {
                             loadComponent: () => import("./app/ui/components/store/store.component").then(c => c.StoreComponent),
                         },
                         {
-                            "path": "product/:id",
-                            "loadComponent": () => import("./app/ui/components/product-detail/product-detail.component").then(c => c.ProductDetailComponent),
+                            path: "product/:id",
+                            loadComponent: () => import("./app/ui/components/product-detail/product-detail.component").then(c => c.ProductDetailComponent),
                         },
                         {
-                            "path": "favorites",
-                            "loadComponent": () => import("./app/ui/components/favorites/favorites.component").then(c => c.FavoritesComponent),
+                            path: "favorites",
+                            loadComponent: () => import("./app/ui/components/favorites/favorites.component").then(c => c.FavoritesComponent),
                         },
                         {
-                            "path": "store/:id",
-                            "loadComponent": () => import("./app/ui/components/store-detail/store-detail.component").then(c => c.StoreDetailComponent),
+                            path: "store/:id",
+                            loadComponent: () => import("./app/ui/components/store-detail/store-detail.component").then(c => c.StoreDetailComponent),
+                        },
+                        {
+                            path: "add-store",
+                            loadComponent: () => import("./app/ui/components/add-store/add-store.component").then(c => c.AddStoreComponent),
+                        },
+                        {
+                            path: "add-product",
+                            loadComponent: () => import("./app/ui/components/add-product/add-product.component").then(c => c.AddProductComponent),
                         }
-
                     ]
                 },
                 {
                     path: "login",
                     loadComponent: () => import("./app/ui/components/auth/login/login.component").then(c => c.LoginComponent),
-                }
+                },
+                {
+                    path: "register",
+                    loadComponent: () => import("./app/ui/components/auth/register/register.component").then(c => c.RegisterComponent),
+                },
             ])),
         provideAnimations(),
     ]
