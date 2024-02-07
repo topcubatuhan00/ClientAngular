@@ -39,7 +39,6 @@ export class AuthService {
 	}
 
 	register(model: any){
-		console.log(model);
 		this._http.post<any>(this.apiRegisterEndpoint, model, res => {
 			if (!res.error) {
 				localStorage.setItem("accessToken", res.token);

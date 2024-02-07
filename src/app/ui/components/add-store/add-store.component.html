@@ -40,7 +40,7 @@
 
                 <div class="d-flex align-items-center justify-content-center">
                     <div class="w-100 mr-3">
-                        <h5 class="m-0">İl Seçiniz</h5>
+                        <span class="m-0">İl Seçiniz</span>
                         <select class="custom-select form-control-border mt-1 p-2" (change)="onLocChange($event)"
                             style="border: 1px solid #00000071;">
                             <option disabled selected>İl Seçiniz</option>
@@ -50,7 +50,7 @@
                         </select>
                     </div>
                     <div class="w-100 ml-3" id="disabledCheck">
-                        <h5 class="m-0">İlçe Seçiniz</h5>
+                        <span class="m-0">İlçe Seçiniz</span>
                         <select [disabled]="selectedCity === ''"
                             [class]="selectedCity === '' ? 'disabled custom-select form-control-border mt-1 p-2' : 'custom-select form-control-border mt-1 p-2'"
                             (change)="onDistChange($event)" style="border: 1px solid #00000071;">

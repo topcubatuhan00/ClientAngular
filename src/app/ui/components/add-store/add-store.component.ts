@@ -4,6 +4,7 @@ import { districts } from './extends/districts';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CryptoService } from '../../../common/services/crypto.service';
 import { CreateStoreModel } from './models/create-store.model';
+import { AddStoreService } from './services/add-store.service';
 
 @Component({
 	selector: 'app-add-store',
@@ -19,7 +20,8 @@ export class AddStoreComponent {
 	loggedUserName: string = "";
 
 	constructor(
-		private _crypto: CryptoService
+		private _crypto: CryptoService,
+		private _service: AddStoreService
 	) {
 		this.locs = locations.cities;
 		this.dists = districts;
@@ -77,7 +79,7 @@ export class AddStoreComponent {
 		obj.creatorName = this.loggedUserName;
 		obj.averageScore = 0;
 
-		console.log(obj);
 		
+		this._service.addStore(obj);
 	}
 }
