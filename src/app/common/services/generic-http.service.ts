@@ -35,6 +35,17 @@ export class GenericHttpService {
         );
     }
 
+    delete<T>(api: string, callBack: (res: T) => void, diffApi: boolean = false) {
+        this._http.delete<T>(`${this.setApi(diffApi, api)}`).subscribe(
+          (res) => {
+            callBack(res);
+          },
+          (err) => {
+            this._toastr.error(err.message, 'Hata!');
+          }
+        );
+      }
+
     setApi(diffApi: boolean, api: string) {
         if (diffApi) {
             return api;

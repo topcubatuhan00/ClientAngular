@@ -72,7 +72,7 @@
             </table>
             }@else{
             <div class="text-center"
-            style="font-size: 20px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                style="font-size: 20px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
                 Merhaba Değerli Müşterimiz, <br />
 
                 Üzgünüz, şu anda mağazamızda geçici olarak ürün bulunmamaktadır. Yeniden stoklama çalışmalarımız devam
@@ -93,5 +93,9 @@
             <iframe style="height:100%;width:100%;border:0;" frameborder="0" [src]="url"></iframe>
             }
         </div>
+        @if (isOwner){
+        <button (click)="removeStore()" class="btn btn-outline-danger w-100 mt-4">Mağazayı Kaldır <i
+                class="fa fa-trash ml-2"></i></button>
+        }
     </div>
 </div>

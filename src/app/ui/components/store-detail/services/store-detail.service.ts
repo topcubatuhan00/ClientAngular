@@ -21,4 +21,9 @@ export class StoreDetailService {
 		let url = "Product/GetWithStoreId/"+id
 		this._http.get<StoreProductModel>(url, callBack)
 	}
+
+	removeStore = (id: number, callBack: (res: any) => void) => {
+		let url = "Store/"+id
+		this._http.delete<StoreProductModel>(url, callBack)
+	}
 }

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StoreDetailModel } from './models/store-detail.model';
 import { StoreDetailService } from './services/store-detail.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { StoreProductModel } from './models/store-product.model';
+import { CryptoService } from '../../../common/services/crypto.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-store-detail',
@@ -18,11 +20,16 @@ export class StoreDetailComponent {
 	store: StoreDetailModel = new StoreDetailModel();
 	products: StoreProductModel[] = [];
 	storeId = 0;
+
+	isOwner: boolean = false;
 	
 	constructor(
 		private _service: StoreDetailService,
 		private _activateRoute: ActivatedRoute,
-		private _sanitizer: DomSanitizer
+		private _sanitizer: DomSanitizer,
+		private _crypto: CryptoService,
+		private _toastr: ToastrService,
+		private _router: Router
 	) {}
 
 	ngOnInit() {
@@ -33,11 +40,15 @@ export class StoreDetailComponent {
 			this._service.fetchStoreById(this.storeId, (store: any) => {
 				this.store = store.data;
 				this.generateMapsUrl();
+				console.log(store.data);
+
+				let token = localStorage.getItem("accessToken");
+				let decoded = this._crypto.getDecodedAccessToken(token ? token : '');
+				this.isOwner = decoded.Name === store.data.creatorName;
 			})
 
 			this._service.fetchProductByStoreId(this.storeId, (products: any) => {
 				this.products = products.data;
-				console.log(this.products);
 			})
 		})
 	}
@@ -54,4 +65,13 @@ export class StoreDetailComponent {
 		return parseFloat(param);
 	}
 
+	removeStore(){
+		this._service.removeStore(this.storeId, (res: any) => {
+			console.log(res);
+			if(res === null){
+				this._toastr.success("Mağaza Başarıyla Kaldırıldı", "Başarılı!");
+				this._router.navigateByUrl("/stores");
+			}
+		})
+	}
 }
