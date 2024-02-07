@@ -3,13 +3,15 @@
         @if(favorites.length === 0){
         <div class="alert alert-danger alert-dismissible">
             <h5><i class="icon fas fa-ban"></i> Uyarı!</h5>
-            Henüz herhangi bir ürün favorilemediğinizi fark ettik. Dilerseniz <a href="/products">ürünler</a> sayfasından 
+            Henüz herhangi bir ürün favorilemediğinizi fark ettik. Dilerseniz <a href="/products">ürünler</a>
+            sayfasından
             beğendiğiniz ürünleri favorilerinize ekleyebilirsiniz.
         </div>
-
         }@else{
-        @for (fav of favorites; track $index){ <div class="callout callout-warning mx-4">
-            <h5>Favoriye Eklenen Ürün</h5>
+        <h3 class="text-center">Favoriye Eklenen Ürünler</h3>
+        <hr />
+        @for (fav of favorites; track $index){
+        <div [class]="$index % 2 === 0 ? 'callout callout-success mx-4' : 'callout callout-danger mx-4'">
             <strong>{{fav.productName}}</strong>
             <hr />
             <div class="d-flex align-items-center justify-content-between">
