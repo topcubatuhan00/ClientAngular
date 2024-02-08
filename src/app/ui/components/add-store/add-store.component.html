@@ -6,34 +6,40 @@
             <div>
                 <div class="mb-3">
                     <span>Mağaza Adı</span>
-                    <input [formControl]="storeName" class="form-control mt-1" type="text" placeholder="Green Choice" autocomplete="false">
+                    <input [formControl]="storeName" class="form-control mt-1" type="text" placeholder="Green Choice"
+                        autocomplete="false">
                 </div>
 
                 <div class="mb-3">
                     <span>Mağaza Telefon Numarası</span>
-                    <input [formControl]="storePhoneNumber" (keypress)="OnlyNumbersAllowed($event)" class="form-control mt-1" type="text" maxlength="10"
-                        placeholder="5538570011" autocomplete="false">
+                    <input [formControl]="storePhoneNumber" (keypress)="OnlyNumbersAllowed($event)"
+                        class="form-control mt-1" type="text" maxlength="10" placeholder="5538570011"
+                        autocomplete="false">
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center mb-3">
                     <div class="w-100 mr-3">
                         <span>Mahalle</span>
-                        <input [formControl]="storeNeighbourhood" class="form-control mt-1" type="text" placeholder="Arapzade Mahallesi" autocomplete="false">
+                        <input [formControl]="storeNeighbourhood" class="form-control mt-1" type="text"
+                            placeholder="Arapzade Mahallesi" autocomplete="false">
                     </div>
                     <div class="w-100 ml-3">
                         <span>Sokak / Cadde</span>
-                        <input [formControl]="storeStreet" class="form-control mt-1" type="text" placeholder="Atatürk Caddesi" autocomplete="false">
+                        <input [formControl]="storeStreet" class="form-control mt-1" type="text"
+                            placeholder="Atatürk Caddesi" autocomplete="false">
                     </div>
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center mb-3">
                     <div class="w-100 mr-3">
                         <span>Bina No</span>
-                        <input [formControl]="storeBuildingNo" class="form-control mt-1" type="number" placeholder="0" autocomplete="false">
+                        <input [formControl]="storeBuildingNo" class="form-control mt-1" type="number" placeholder="0"
+                            autocomplete="false">
                     </div>
                     <div class="w-100 ml-3">
                         <span>Daire No</span>
-                        <input [formControl]="storeHouseNo" class="form-control mt-1" type="number" placeholder="0" autocomplete="false">
+                        <input [formControl]="storeHouseNo" class="form-control mt-1" type="number" placeholder="0"
+                            autocomplete="false">
                     </div>
                 </div>
 
@@ -73,3 +79,5 @@
                 <button (click)="submitForm()" class="btn btn-outline-info w-100 mt-4">Kaydet</button>
             </div>
         </div>
+    </div>
+</div>

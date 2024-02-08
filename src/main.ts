@@ -46,7 +46,7 @@ bootstrapApplication(AppComponent, {
                             loadComponent: () => import("./app/ui/components/add-store/add-store.component").then(c => c.AddStoreComponent),
                         },
                         {
-                            path: "add-product",
+                            path: "store/:id/add-product",
                             loadComponent: () => import("./app/ui/components/add-product/add-product.component").then(c => c.AddProductComponent),
                         }
                     ]
