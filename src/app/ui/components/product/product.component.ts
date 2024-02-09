@@ -29,7 +29,7 @@ export class ProductComponent {
 		this._service.fetch(this.pageNumber, this.pageSize, (products: any) => {
 			this.products = products.data.items;
 			this.pageNumber = parseInt(products.data.currentPage);
-			this.totalPages = parseInt(products.data.totalPages);
+			this.totalPages = parseInt(products.data.totalPages);			
 		})
 	}
 

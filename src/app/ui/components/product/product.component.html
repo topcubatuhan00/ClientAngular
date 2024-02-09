@@ -10,8 +10,8 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Ürün Adı</th>
-                        <th>Ürün Barkodu</th>
                         <th>Ürün Markası</th>
+                        <th>Bulunduğu Mağaza</th>
                         <th style="width: 50px">Puanı</th>
                     </tr>
                 </thead>
@@ -20,8 +20,8 @@
                     <tr (click)="productDetail(product.id)" class="pe-auto" style="cursor: pointer;">
                         <td>{{$index+1}}</td>
                         <td>{{product.name}}</td>
-                        <td>{{product.barcode}}</td>
                         <td>{{product.brandName}}</td>
+                        <td>{{product.storeName}}</td>
                         <td>
                             @if(convertSTR(product.averageScore) >= 4)
                             {
