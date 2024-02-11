@@ -30,6 +30,10 @@ bootstrapApplication(AppComponent, {
                             loadComponent: () => import("./app/ui/components/store/store.component").then(c => c.StoreComponent),
                         },
                         {
+                            path: "settings",
+                            loadComponent: () => import("./app/ui/components/settings/settings.component").then(c => c.SettingsComponent),
+                        },
+                        {
                             path: "product/:id",
                             loadComponent: () => import("./app/ui/components/product-detail/product-detail.component").then(c => c.ProductDetailComponent),
                         },
