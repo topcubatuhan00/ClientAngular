@@ -15,8 +15,7 @@
 
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                    aria-label="Search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>
@@ -26,8 +25,7 @@
         </div>
 
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="/" class="nav-link">
                         <i class="nav-icon fas fa-columns"></i>
@@ -52,6 +50,7 @@
                         </p>
                     </a>
                 </li>
+                @if (!flag){
                 <li class="nav-item">
                     <a href="/favorites" class="nav-link">
                         <i class="nav-icon fas fa-heart"></i>
@@ -60,6 +59,7 @@
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="/settings" class="nav-link">
                         <i class="nav-icon fa fa-cog"></i>
@@ -68,22 +68,23 @@
                         </p>
                     </a>
                 </li>
+                }
                 <li class="nav-item">
                     @if (!flag){
-                        <a (click)="logout()" class="nav-link">
-                            <i class="nav-icon fas fa-circle text-danger"></i>
-                            <p style="cursor: pointer;">
-                                Çıkış Yap
-                            </p>
-                        </a>
+                    <a (click)="logout()" class="nav-link">
+                        <i class="nav-icon fas fa-circle text-danger"></i>
+                        <p style="cursor: pointer;">
+                            Çıkış Yap
+                        </p>
+                    </a>
                     }
                     @else {
-                        <a href="/login" class="nav-link">
-                            <i class="nav-icon fas fa-circle text-success"></i>
-                            <p>
-                                Giriş Yap
-                            </p>
-                        </a>
+                    <a href="/login" class="nav-link">
+                        <i class="nav-icon fas fa-circle text-success"></i>
+                        <p>
+                            Giriş Yap
+                        </p>
+                    </a>
                     }
                 </li>
             </ul>

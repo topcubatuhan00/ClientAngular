@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CryptoService } from '../../../common/services/crypto.service';
 import { AuthService } from '../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-sidebar',
@@ -13,10 +14,11 @@ export class SidebarComponent {
 
 	constructor(
 		private _crypto: CryptoService,
-		private _authService: AuthService
+		private _authService: AuthService,
+		private _router: Router
 	) { }
 
-	userName = 'NotLogged User';
+	userName = 'Ziyaretçi';
 	apiUrl = '../../../../assets/stockUser.jpg';
 	flag = false;
 
@@ -34,7 +36,6 @@ export class SidebarComponent {
 
 	logout() {
 		this._authService.logOut();
-		window.location.reload();
+		this._router.navigateByUrl("/login")
 	}
-
 }

@@ -19,7 +19,14 @@ export class ProductDetailComponent {
 		private _activateRoute: ActivatedRoute,
 		private _service: ProductDetailService,
 		private _crypto: CryptoService,
-	) { }
+	) {
+		let token = localStorage.getItem('accessToken');
+		if(token){
+			this.flag = true;
+		}else{
+			this.flag = false;
+		}
+	}
 
 	id: number = 0;
 	product = new ProductDetailModel();
@@ -29,6 +36,7 @@ export class ProductDetailComponent {
 	userId = 0;
 	userName = "";
 	favoriteId = 0;
+	flag = true;
 
 	comment = new FormControl('');
 

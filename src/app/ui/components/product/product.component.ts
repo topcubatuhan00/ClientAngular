@@ -14,7 +14,9 @@ export class ProductComponent {
 	constructor(
 		private _service: ProductService,
 		private _router: Router
-	) { }
+	) {
+		
+	}
 
 	products: ProductModel[] = [];
 	pageNumber: number = 1;
