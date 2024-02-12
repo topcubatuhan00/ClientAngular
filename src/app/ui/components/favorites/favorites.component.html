@@ -8,7 +8,9 @@
             beğendiğiniz ürünleri favorilerinize ekleyebilirsiniz.
         </div>
         }@else{
-        <h3 class="text-center">Favoriye Eklenen Ürünler</h3>
+            <div class="titleBack">
+                <h3 class="text-center">Favoriler</h3>
+            </div>
         <hr />
         @for (fav of favorites; track $index){
         <div [class]="$index % 2 === 0 ? 'callout callout-success mx-4' : 'callout callout-danger mx-4'">

@@ -1,7 +1,22 @@
 <div class="content-wrapper">
     <div class="container">
-        <p>settings works!</p>
+        <div class="card-header titleBack">
+            <h1 class="card-title" style="font-size: 24px;"><strong>Sistem Ayarları</strong></h1>
+        </div>
+        <div class="card-body p-0">
+            @for (set of settings; track $index){
+                <div class="my-3">
+                    <div class="p-4 d-flex align-items-center justify-content-between" style="border: 1px solid #000; border-radius: 10px;">
+                        <span>
+                            {{generateName(set.name)}}
+                        </span>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <input type="number" [value]="set.value" class="p-1" style="border-radius: 5px; border: 1px solid #000;" (input)="updateInputValue($event)">
+                            <button class="btn btn-outline-info ml-2" (click)="logInputValue(set)">Güncelle</button>
+                          </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
-
-
