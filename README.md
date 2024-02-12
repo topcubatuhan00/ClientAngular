@@ -1,27 +1,19 @@
-# ClientAngular
+# GreenChoice
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+Yeşil bir adım at, doğayı koru, GreenChoice ile sürdürülebilir alışverişin tadını çıkar!
 
-## Development server
+![Logo](https://i.hizliresim.com/rkhnd9q.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Açıklama
 
-## Code scaffolding
+GreenChoice, kullanıcıların çevre dostu ve sürdürülebilir ürünleri bulmalarına, satın almalarına ve sürdürülebilir yaşam tarzı seçimleri yapmalarına yardımcı olmayı hedefleyen bir mobil uygulamadır. Uygulama, kullanıcıların bilinçli alışveriş yapmalarını teşvik ederek doğal kaynakları korumayı ve çevresel etkileri azaltmayı amaçlar.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# GreenChoice 
 
-## Build
+Take a green step, protect nature, and embrace sustainable shopping with GreenChoice!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Description
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+GreenChoice is a mobile application aiming to help users find, purchase, and make sustainable lifestyle choices with environmentally friendly and sustainable products. The app aims to encourage conscious shopping among users to protect natural resources and reduce environmental impacts.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
