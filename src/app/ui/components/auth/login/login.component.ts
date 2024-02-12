@@ -18,15 +18,43 @@ export class LoginComponent {
 		private _router: Router,
 	) { }
 
+	ngOnInit() {
+		let userName = localStorage.getItem("rememberUserName");
+		if(userName){
+			this.flag = true;
+			this.rememberUserName = userName;
+			let photo = 'https://localhost:7269/Image/GetImage/'+localStorage.getItem("rememberUserPhoto");
+			this.rememberUserPhoto = photo ? photo : '';
+		}
+	}
+	
+	flag = false;
+	rememberUserName = '';
+	rememberUserPhoto = '';
 	userName = new FormControl('', [Validators.required]);
 	password = new FormControl('', [Validators.required]);
+	rememberPassword = new FormControl('', [Validators.required]);
+	rememberMe = new FormControl(true, [Validators.required]);
 
 	login(){
-		let obj = {
-			userName: this.userName.value,
-			password: this.password.value
+		let obj = {}
+		if(!this.flag){
+			obj = {
+				userName: this.userName.value,
+				password: this.password.value
+			}
+		}else{
+			obj = {
+				userName: this.rememberUserName,
+				password: this.rememberPassword.value
+			}
 		}
+		this._auth.login(obj, this.rememberMe.value ? this.rememberMe.value : false);
+	}
 
-		this._auth.login(obj);
+	reset(){
+		localStorage.removeItem("rememberUserName");
+		localStorage.removeItem("rememberUserPhoto");
+		window.location.reload();
 	}
 }

@@ -1,0 +1,70 @@
+<div class="content-wrapper">
+    <div class="container py-4">
+        <div class="shadow p-4" style="border-radius: 10px;">
+            <h1>Ürün Ekleme Formu </h1>
+            <hr />
+            <div>
+                <div class="mb-3">
+                    <span>Ürün Adı</span>
+                    <input [formControl]="name" class="form-control mt-1" type="text" placeholder="Detoks Burger"
+                        autocomplete="false">
+                </div>
+
+                <div class="mb-3">
+                    <span>Ürün Açıklaması</span>
+                    <input [formControl]="description" class="form-control mt-1" type="text" placeholder="..."
+                        autocomplete="false">
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                    <div class="w-100 mr-3">
+                        <span>Kategori</span>
+                        <select class="custom-select form-control-border mt-1 p-2" (change)="onCategoryChange($event)"
+                            style="border: 1px solid #00000071;">
+                            <option disabled selected>Kategori</option>
+                            @for (category of categories; track $index){
+                                @if(category.name !== "Default Category"){
+                                    <option [value]="category.id">{{category.name}}</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="w-100 ml-3">
+                        <span>Marka Adı</span>
+                        <input [formControl]="brandName" class="form-control mt-1" type="text"
+                            placeholder="Green Choice" autocomplete="false">
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                    <div class="w-100 mr-3">
+                        <span>Barkod Numarası</span>
+                        <input [formControl]="barcode" class="form-control mt-1" type="text" maxlength="9"
+                            placeholder="11111111" autocomplete="false">
+                    </div>
+                    <div class="w-100 ml-3">
+                        <span>Fiyat</span>
+                        <input [formControl]="price" class="form-control mt-1" type="number" placeholder="0"
+                            autocomplete="false">
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                    <div class="w-100 mr-3">
+                        <span>Paket Bilgileri</span>
+                        <input [formControl]="packageInformation" class="form-control mt-1" type="text"
+                            placeholder="..." autocomplete="false">
+                    </div>
+                    <div class="w-100 ml-3">
+                        <span>Üretim Bilgileri</span>
+                        <input [formControl]="productionProcessInformation" class="form-control mt-1" type="text" placeholder="..."
+                            autocomplete="false">
+                    </div>
+                </div>
+
+                <hr class="mt-4" />
+                <button (click)="submitForm()" class="btn btn-outline-info w-100 mt-4">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>

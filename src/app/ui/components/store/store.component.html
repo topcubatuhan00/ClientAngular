@@ -1,0 +1,61 @@
+<div class="content-wrapper">
+    <div class="container">
+        <div class="card-header">
+            <div class="titleBack">
+                <h3><strong>Mağazalar</strong></h3>
+            </div>
+            <div id="addStore" (click)="addStore()" style="background-color: #dddddd7d; float: right; border-radius: 10px; cursor: pointer;" class="p-2">
+                <i class="fa fa-plus bg-dark p-1 mr-1" style="border-radius: 5px;"></i>
+                <span>Mağaza Ekle</span>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Mağaza Adı</th>
+                        <th>Adresi</th>
+                        <th>Telefon No</th>
+                        <th style="width: 40px">Puanı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (store of stores; track $index){
+                    <tr (click)="storeDetail(store.id)" class="pe-auto" style="cursor: pointer;">
+                        <td>{{$index+1}}</td>
+                        <td>{{store.name}}</td>
+                        <td>{{store.address}}</td>
+                        <td>{{store.phoneNumber}}</td>
+                        <td>
+                            @if(convertSTR(store.averageScore) >= 4)
+                            {
+                            <span class="badge bg-success">{{ store.averageScore }}</span>
+                            }
+                            @else if(convertSTR(store.averageScore) < 4 && convertSTR(store.averageScore)>= 3)
+                                {
+                                <span class="badge bg-warning"> {{ store.averageScore }}</span>
+                                }
+                                @else if(convertSTR(store.averageScore) < 3) { <span class="badge bg-danger"> {{
+                                    store.averageScore }}</span>
+                                    }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li [classList]="pageNumber === 1 ? 'disabled page-item' : 'page-item'">
+                    <a style="font-size: 24px; cursor: pointer;" class="page-link" (click)="changePageNumber(-1)">«</a>
+                </li>
+                <li [classList]="pageNumber === totalPages ? 'disabled page-item' : 'page-item'">
+                    <a style="font-size: 24px; cursor: pointer;"
+                        [classList]="pageNumber === totalPages ? 'disabled page-link' : 'page-link'"
+                        (click)="changePageNumber(1)">»</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

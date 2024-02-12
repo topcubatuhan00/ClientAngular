@@ -1,0 +1,56 @@
+<div class="content-wrapper">
+    <div class="container">
+        <div class="card-header titleBack">
+            <h3><strong>Ürünler</strong></h3>
+        </div>
+
+        <div class="card-body p-0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Markası</th>
+                        <th>Bulunduğu Mağaza</th>
+                        <th style="width: 50px">Puanı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (product of products; track $index){
+                    <tr (click)="productDetail(product.id)" class="pe-auto" style="cursor: pointer;">
+                        <td>{{$index+1}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.brandName}}</td>
+                        <td>{{product.storeName}}</td>
+                        <td>
+                            @if(convertSTR(product.averageScore) >= 4)
+                            {
+                            <span class="badge bg-success">{{ product.averageScore }}</span>
+                            }
+                            @else if(convertSTR(product.averageScore) < 4 && convertSTR(product.averageScore)>= 3)
+                                {
+                                <span class="badge bg-warning"> {{ product.averageScore }}</span>
+                                }
+                                @else if(convertSTR(product.averageScore) < 3) { <span class="badge bg-danger"> {{
+                                    product.averageScore }}</span>
+                                    }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li [classList]="pageNumber === 1 ? 'disabled page-item' : 'page-item'">
+                    <a style="font-size: 24px; cursor: pointer;" class="page-link" (click)="changePageNumber(-1)">«</a>
+                </li>
+                <li [classList]="pageNumber === totalPages ? 'disabled page-item' : 'page-item'">
+                    <a style="font-size: 24px; cursor: pointer;"
+                        [classList]="pageNumber === totalPages ? 'disabled page-link' : 'page-link'"
+                        (click)="changePageNumber(1)">»</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
